@@ -41,6 +41,12 @@
 - **Архитектура компьютера**
   - Процессор и память: стек vs куча
   - Байт-код Python и виртуальная машина
+- **Системные утилиты**
+  - Модули `os`, `sys`, `subprocess`
+- **Виртуальные окружения**
+  - `venv`, `virtualenv`, `pipenv`, `poetry`
+- **Паттерны именования**
+  - PEP 8: `snake_case`, `CamelCase`, константы (`UPPER_CASE`)
 
 ---
 
@@ -49,6 +55,7 @@
 - **Условные операторы**
   - `if`, `elif`, `else`
   - Вложенные условия
+  - Тернарный оператор: `x = a if condition else b`
   - Сопоставление структур (Structural Pattern Matching) в Python 3.10+
   - Использование `bool()` для неявного приведения
 - **Циклы**
@@ -69,12 +76,14 @@
 - **Списки**
   - Создание, индексация, срезы с шагом (`list[::-1]`)
   - Методы: `append()`, `remove()`, `pop()`, `sort()`, `reverse()`
+  - Дополнительные методы: `extend()`, `copy()`, `clear()`
   - List comprehensions с условиями
   - Многомерные списки и обработка
 - **Кортежи**
   - Неизменяемость и оптимизация
 - **Словари**
   - Создание, методы: `keys()`, `values()`, `items()`
+  - Дополнительные методы: `get()`, `setdefault()`, `update()`
   - `OrderedDict`, `ChainMap`, `defaultdict`, `Counter`
   - Подклассы `UserDict` для кастомного поведения
 - **Множества**
@@ -92,6 +101,12 @@
 - **Сравнение структур данных**
   - Time complexity операций
   - Выбор оптимальной структуры
+- **Работа с путями**
+  - `pathlib` вместо `os.path`: `Path("file.txt").read_text()`
+- **Дата и время**
+  - Модули `datetime`, `pytz`, `dateutil`
+- **Конфигурационные файлы**
+  - YAML (`pyyaml`), TOML (`tomllib`), `.env` (`python-dotenv`)
 
 ---
 
@@ -99,8 +114,10 @@
 
 - **Основы**
   - Определение функций (`def`, `lambda`)
+  - Ограничения lambda: одна строка, нет явного `return`
   - Аргументы: позиционные, именованные, значения по умолчанию
   - Область видимости (`global`, `local`)
+  - LEGB-правило: Local → Enclosing → Global → Built-in
 - **Продвинутые возможности**
   - `*args` и `**kwargs`
   - Замыкания (closures)
@@ -124,10 +141,12 @@
 - **Основы импорта**
   - `import`, `from ... import`
   - Стандартные модули (`math`, `random`, `datetime`)
+  - Использование `if __name__ == "__main__"`
 - **Система импорта**
   - Absolute vs Relative импорт
   - Динамический импорт (`__import__()`, `importlib`)
   - Перезагрузка модулей (`importlib.reload`)
+  - Контроль импорта: `__all__` для публичных объектов
 - **Создание и распространение**
   - Структура пакетов (`__init__.py`, `__main__.py`)
   - `setup.py` и `pyproject.toml`
@@ -154,6 +173,9 @@
   - ZIP, TAR (`shutil`, `gzip`, `bz2`)
 - **Сетевые файлы**
   - FTP (`ftplib`), SFTP (`paramiko`)
+- **Логирование**
+  - Настройка форматов (`logging.Formatter`)
+  - Обработчики (`RotatingFileHandler`, `SMTPHandler`)
 
 ---
 
@@ -170,6 +192,7 @@
 - **Отладка**
   - Трассировка (`traceback`)
   - Постмортем-отладка (`pdb.pm()`)
+  - Покрытие кода: `coverage.py`
 
 ---
 
@@ -178,10 +201,12 @@
 - **Основы**
   - Классы и объекты
   - Наследование, полиморфизм, инкапсуляция
+  - Композиция vs Наследование
   - Магические методы (`__str__`, `__repr__`, `__len__`)
 - **Продвинутые концепции**
   - Метаклассы (`type`, `__prepare__`, `__new__`)
   - Дескрипторы (`property`, `@classmethod`)
+  - Статические методы: `@staticmethod`
   - Миксины и ABC (Abstract Base Classes)
   - Слоты (`__slots__`) для оптимизации
 - **Экспертные техники**
@@ -204,6 +229,8 @@
 - **Паттерны**
   - Ленивые вычисления
   - Конвейерная обработка данных
+- Модуль `itertools`
+  - `chain`, `product`, `permutations`, `combinations`
 
 ---
 
@@ -212,10 +239,12 @@
 - **Основы**
   - Создание декораторов
   - `functools.wraps` для сохранения метаданных
+  - Декораторы с аргументами
 - **Продвинутые техники**
   - Декораторы классов
   - Цепочки декораторов
   - Кеширующие декораторы (`lru_cache`, Redis)
+  - Декоратор `functools.cached_property`
 - **Архитектурные паттерны**
   - AOP (Аспектно-ориентированное программирование)
   - Транзакционные декораторы для БД
@@ -232,6 +261,7 @@
   - Mocking (`unittest.mock`)
   - Нагрузочное тестирование (`Locust`)
   - Mutation testing (`cosmic-ray`)
+  - BDD: `behave`, `pytest-bdd`
 - **Профилирование**
   - `cProfile`, `line_profiler`
   - Визуализация результатов (`snakeviz`)
@@ -257,10 +287,12 @@
 - **Основы**
   - `asyncio`, корутины, `async/await`
   - Event Loop
+  - Async context managers: `async with`
 - **Продвинутые темы**
   - Асинхронные контекстные менеджеры
   - Распределенные системы (`Celery`, `RQ`)
   - Ускорение (`uvloop`, `httptools`)
+  - Управление задачами: `asyncio.gather`, `asyncio.wait`
 
 ---
 
@@ -270,11 +302,14 @@
   - HTTP (`requests`, `httpx`, `aiohttp`)
   - Сокеты (`socket` модуль)
   - WebSocket
+  - REST API: `FastAPI`, `Flask`
 - **Безопасность**
   - SSL/TLS, Mutual TLS
   - Защита от SQL-инъекций
+  - Аутентификация: OAuth2, JWT
 - **Веб-скрапинг**
   - `BeautifulSoup`, `Scrapy`
+  - gRPC: Базовое описание и библиотеки (`grpc`)
 
 ---
 
@@ -282,10 +317,12 @@
 
 - **SQL**
   - SQLite (`sqlite3`), ORM (`SQLAlchemy`)
+  - Миграции: `Alembic`
   - Оптимизация запросов (индексы, `EXPLAIN ANALYZE`)
 - **NoSQL**
   - MongoDB, Redis
   - Векторные БД (`Pinecone`, `Milvus`)
+  - Асинхронные ORM: `TortoiseORM`, `SQLModel`
 - **Асинхронные драйверы**
   - `asyncpg`, `aiosqlite`
 
@@ -295,7 +332,9 @@
 
 - **Библиотеки**
   - `NumPy`, `Pandas`, `Matplotlib`
+  - Визуализация: `Seaborn`, `Plotly`
   - Машинное обучение (`scikit-learn`, `PyTorch`)
+  - Обработка изображений: `Pillow`, `OpenCV`
 - **Распределенные вычисления**
   - `Dask`, `Apache Spark`
 - **GPU ускорение**
@@ -308,9 +347,11 @@
 - **Фреймворки**
   - `Tkinter`, `PyQt`, `Kivy`
   - Веб-интерфейсы (`Dash`, `Streamlit`)
+  - SSR: `FastAPI` + `Jinja2`
 - **Продвинутые техники**
   - 3D визуализация (`VTK`)
   - Упаковка в EXE (`PyInstaller`)
+  - Мобильные приложения: `KivyMD`, `BeeWare`
 
 ---
 
@@ -318,9 +359,11 @@
 
 - **Криптография**
   - Хэширование (`hashlib`), шифрование (`cryptography`)
+  - Хранение паролей: `bcrypt`, `passlib`
 - **Уязвимости**
   - Анализ CVE (`safety`, `bandit`)
   - SAST/DAST сканирование
+  - OWASP Top 10: XSS, CSRF, SQLi
 - **Compliance**
   - GDPR, PCI DSS
 
@@ -332,6 +375,7 @@
   - Командная строка (`argparse`, `click`)
   - Логирование (`logging` модуль)
   - Веб-ассембли (`Pyodide`)
+  - Аудио/видео: `pydub`, `moviepy`
 - **Мобильная разработка**
   - `BeeWare`, `KivyMD`
 
@@ -342,10 +386,12 @@
 - **Инфраструктура**
   - Docker, Terraform, Ansible
   - CI/CD (GitHub Actions, GitLab CI)
+  - Оркестрация: Kubernetes, Docker Swarm
 - **Мониторинг**
   - Prometheus, OpenTelemetry
 - **Serverless**
   - AWS Lambda, Google Cloud Functions
+  - Инфраструктура как код: Pulumi
 
 ---
 
@@ -353,10 +399,12 @@
 
 - **MLOps**
   - `MLflow`, `Kubeflow`
+  - Мониторинг моделей: `Evidently`, `Prometheus`
 - **Объяснимый AI**
   - SHAP, LIME
 - **Edge AI**
   - TensorFlow Lite, ONNX Runtime
+  - AutoML: `AutoSklearn`, `TPOT`
 
 ---
 
@@ -365,6 +413,7 @@
 - **Развитие**
   - Участие в Open Source
   - Технические собеседования
+  - Ресурсы: Книги («Чистый Python», «Fluent Python»), курсы
 - **Инновации**
   - Контрибьюция в CPython
   - AI research
